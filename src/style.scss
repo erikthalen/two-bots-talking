@@ -1,0 +1,20 @@
+@import './vue/imessage-animation/imessage-animation';
+
+*  {
+    box-sizing: border-box;
+}
+
+.title {
+    h1, p {
+        text-rendering: optimizeLegibility;
+        font-size: 1rem;
+        font-weight: normal;
+        margin: 0;
+        font-family: "Helvetica Neue", "Arial", sans-serif;
+        color: grey;
+    }
+
+    p {
+        font-size: .7em;
+    }
+}

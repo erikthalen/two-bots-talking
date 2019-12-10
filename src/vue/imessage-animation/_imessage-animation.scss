@@ -1,0 +1,169 @@
+@import 'other-is-typing';
+@import 'input-field';
+
+@keyframes message {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.imessage-animation {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    width: 450px;
+    max-width: 85%;
+    margin: auto auto 50px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+    z-index: 1;
+
+    height: 100%;
+    height: fit-content;
+    min-height: 70vh;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+
+    @media screen and (min-width: 600px) {
+        bottom: 20%;
+    }
+
+    &__messages {
+        display: flex;
+        flex-direction: column;
+
+
+        p {
+            // animation: message .2s forwards;
+            margin: 0;
+            max-width: 290px;
+            width: fit-content;
+            word-wrap: break-word;
+            margin-bottom: 12px;
+            line-height: 24px;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 25px;
+
+            cursor: default;
+
+            // https://brumm.af/shadows
+            box-shadow: 0 4px 4.2px -22px rgba(0, 0, 0, 0.67),
+                0 7.6px 10.6px -22px rgba(0, 0, 0, 0.262),
+                0 10.9px 21.8px -22px rgba(0, 0, 0, 0.166),
+                0 15.1px 46.7px -22px rgba(0, 0, 0, 0.107),
+                0 52px 135px -22px rgba(0, 0, 0, 0.057);
+
+
+            a {
+                text-decoration: underline;
+                color: inherit;
+            }
+
+            &:before,
+            &:after {
+                // content: "";
+                position: absolute;
+                bottom: -2px;
+                height: 20px;
+            }
+        }
+
+        .from-me {
+            color: white;
+            background: #0B93F6;
+            align-self: flex-end;
+
+            &:before {
+                right: -7px;
+                border-right: 20px solid #0B93F6;
+                border-bottom-left-radius: 16px 14px;
+                transform: translate(0, -2px);
+            }
+
+            &:after {
+                right: -56px;
+                width: 26px;
+                background: white;
+                border-bottom-left-radius: 10px;
+                transform: translate(-30px, -2px);
+            }
+        }
+
+        .from-them {
+            background: #E5E5EA;
+            color: black;
+
+            &:before {
+                left: -7px;
+                border-left: 20px solid #E5E5EA;
+                border-bottom-right-radius: 16px 14px;
+                transform: translate(0, -2px);
+            }
+
+            &:after {
+                left: 4px;
+                width: 26px;
+                background: white;
+                border-bottom-right-radius: 10px;
+                transform: translate(-30px, -2px);
+            }
+        }
+    }
+}
+
+.typed-element {
+    .typing {
+        display: inline;
+    }
+
+    .typed-cursor,
+    .typed-cursor--blink {
+        opacity: 1;
+        animation: typedjsBlink 1s ease-in-out infinite !important;
+        font-size: 1.2em;
+        line-height: .9em;
+        color: #0B93F6;
+    }
+}
+
+@keyframes typedjsBlink {
+    50% {
+        opacity: 0.0;
+    }
+}
+
+.fade-in-enter-active {
+    transition: opacity .2s;
+}
+
+.fade-in-leave-active {
+    transition: opacity 0s;
+}
+
+.fade-in-enter,
+.fade-in-leave-to {
+    opacity: 0;
+}
+
+.conversation-item {
+    transition: all .2s;
+}
+
+.conversation-enter,
+.conversation-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.conversation-leave-active {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+}

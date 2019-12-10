@@ -1,0 +1,29 @@
+<head><link rel="shortcut icon" href="icon.jpg"></head><div id="app">
+
+    <div class="row">
+        
+        <div class="col">
+            <h3>Style</h3>
+            <radio v-for="(style, index) in styles" :checked="index === 0" :key="style.id" :id="style.id"
+                :name="'style'" />
+        </div>
+        
+        <div class="col">
+            <h3>Color</h3>
+            <radio v-for="(color, index) in colors" :checked="index === 0" :key="color.id" :id="color.id"
+                :name="'color'" />
+        </div>
+        
+        <div class="col">
+            <h3>Underline</h3>
+            <radio v-for="(line, index) in underlines" :checked="index === 0" :key="line.id" :id="line.id"
+                :name="'line'" />
+
+        </div>
+    </div>
+
+    <hr>
+
+    <text-block />
+</div>
+<script type="text/javascript" src="main.js"></script>
