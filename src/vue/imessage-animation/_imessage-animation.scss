@@ -54,8 +54,7 @@
             cursor: default;
 
             // https://brumm.af/shadows
-            box-shadow: 0 4px 4.2px -22px rgba(0, 0, 0, 0.67),
-                0 7.6px 10.6px -22px rgba(0, 0, 0, 0.262),
+            box-shadow: 0 7.6px 10.6px -22px rgba(0, 0, 0, 0.262),
                 0 10.9px 21.8px -22px rgba(0, 0, 0, 0.166),
                 0 15.1px 46.7px -22px rgba(0, 0, 0, 0.107),
                 0 52px 135px -22px rgba(0, 0, 0, 0.057);
@@ -125,6 +124,7 @@
 
     .typed-cursor,
     .typed-cursor--blink {
+				position: absolute;
         opacity: 1;
         animation: typedjsBlink 1s ease-in-out infinite !important;
         font-size: 1.2em;

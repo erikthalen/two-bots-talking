@@ -7,8 +7,8 @@
       v-if="sentMessages.length"
     >
       <p
-        v-for="message in sentMessages"
-        :key="message.text"
+        v-for="(message, i) in sentMessages"
+        :key="message.text + i"
         :class="`from-${message.from} conversation-item`"
         v-html="message.text"
       ></p>
@@ -23,15 +23,20 @@
 import inputField from "./input-field.vue";
 import otherIsTyping from "./other-is-typing.vue";
 
+//import send from './../../../assets/imessage_send.mp3'
+
 export default {
   name: "imessage-animation",
   components: {
     inputField,
     otherIsTyping
   },
+	props: {
+		conversation: { type: Array, default: [] }
+	},
   data() {
     return {
-      // running: false,
+      isRunning: false,
       currentInput: "",
       isWritingReply: false,
 
@@ -42,23 +47,20 @@ export default {
   },
   computed: {
     running() {
-      return this.$root.readyToRun;
-    },
-    conversation() {
-      return this.$root.messages;
+      return this.conversation.length;
     },
     getLengthOfLastMessage() {
       // calc how long the message is and take that times delay/char
-      return this.currentMessageIndex
+			return this.conversation[this.currentMessageIndex - 1]
         ? this.conversation[this.currentMessageIndex - 1].text.length * 50
         : 1500;
     },
     getLengthOfThisMessage() {
       // calc how long the message is and take that times delay/char
-      return this.currentMessageIndex
+      return this.conversation.length
         ? Math.max(
-            this.conversation[this.currentMessageIndex].text.length * 20,
-            500
+            this.conversation[this.currentMessageIndex].text.length * 10,
+            300
           )
         : 1500;
     }
@@ -68,7 +70,10 @@ export default {
   },
   methods: {
     startConversation() {
-      this.nextStep();
+			if(!this.isRunning) {
+      		this.nextStep();
+					this.isRunning = true
+			}
     },
 
     nextStep() {
